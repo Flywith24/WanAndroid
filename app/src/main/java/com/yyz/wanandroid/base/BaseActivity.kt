@@ -1,6 +1,7 @@
 package com.yyz.wanandroid.base
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
@@ -13,14 +14,13 @@ import kotlinx.coroutines.cancel
  * description
  */
 abstract class BaseActivity : AppCompatActivity(), CoroutineScope by MainScope() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(setContentView())
         initView()
     }
 
-    abstract fun setContentView(): Int
+    abstract fun setContentView(): View
     abstract fun initView()
 
     override fun onDestroy() {
