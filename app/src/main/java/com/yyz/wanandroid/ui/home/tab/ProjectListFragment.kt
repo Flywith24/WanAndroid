@@ -16,7 +16,6 @@ class ProjectListFragment : BaseFragment<FragmentArticleBinding>(R.layout.fragme
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
         }
-        binding.tvContent.text = param1
     }
 
     companion object {
