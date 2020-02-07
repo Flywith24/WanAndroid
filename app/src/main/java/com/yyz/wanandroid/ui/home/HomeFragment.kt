@@ -1,29 +1,21 @@
 package com.yyz.wanandroid.ui.home
 
-import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
+import androidx.lifecycle.observe
 import com.yyz.wanandroid.R
+import com.yyz.wanandroid.base.BaseFragment
+import com.yyz.wanandroid.databinding.FragmentHomeBinding
 
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     private val homeViewModel by viewModels<HomeViewModel>()
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
+    override fun bindView(view: View): FragmentHomeBinding = FragmentHomeBinding.bind(view)
+
+    override fun initData() {
+        homeViewModel.text.observe(viewLifecycleOwner) {
+            binding.tvHome.text = it
+        }
     }
 }
