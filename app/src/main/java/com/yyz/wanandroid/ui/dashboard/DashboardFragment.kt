@@ -10,7 +10,7 @@ import com.yyz.wanandroid.databinding.FragmentDashboardBinding
 class DashboardFragment : BaseFragment<FragmentDashboardBinding>(R.layout.fragment_dashboard) {
     private val dashboardViewModel by viewModels<DashboardViewModel>()
 
-    override fun bindView(view: View): FragmentDashboardBinding =
+    override fun initBinding(view: View): FragmentDashboardBinding =
         FragmentDashboardBinding.bind(view)
 
     override fun initData() {

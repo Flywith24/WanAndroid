@@ -11,7 +11,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     private val homeViewModel by viewModels<HomeViewModel>()
 
-    override fun bindView(view: View): FragmentHomeBinding = FragmentHomeBinding.bind(view)
+    override fun initBinding(view: View): FragmentHomeBinding = FragmentHomeBinding.bind(view)
 
     override fun initData() {
         homeViewModel.text.observe(viewLifecycleOwner) {

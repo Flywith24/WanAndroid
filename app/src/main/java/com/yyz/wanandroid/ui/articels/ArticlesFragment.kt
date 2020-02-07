@@ -11,7 +11,7 @@ class ArticlesFragment : BaseFragment<FragmentArticlesBinding>(R.layout.fragment
 
     private val articlesViewModel by viewModels<ArticlessViewModel>()
 
-    override fun bindView(view: View): FragmentArticlesBinding = FragmentArticlesBinding.bind(view)
+    override fun initBinding(view: View): FragmentArticlesBinding = FragmentArticlesBinding.bind(view)
 
     override fun initData() {
         articlesViewModel.text.observe(viewLifecycleOwner) {

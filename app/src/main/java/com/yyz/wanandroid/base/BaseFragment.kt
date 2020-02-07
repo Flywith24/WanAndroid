@@ -25,14 +25,14 @@ abstract class BaseFragment<T : ViewBinding>(layoutId: Int) : Fragment(layoutId)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = bindView(view)
+        _binding = initBinding(view)
         initData()
     }
 
     /**
-     * 绑定 [_binding]
+     * 初始化 [_binding]
      */
-    abstract fun bindView(view: View): T
+    abstract fun initBinding(view: View): T
 
     abstract fun initData()
 
