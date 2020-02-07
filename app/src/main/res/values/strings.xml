@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">WanAndroid</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="app_name">玩Android客户端</string>
+    <string name="title_home">首页</string>
+    <string name="title_dashboard">项目</string>
+    <string name="title_articles">公众号</string>
 </resources>

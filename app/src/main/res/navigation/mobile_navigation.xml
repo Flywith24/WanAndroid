@@ -20,6 +20,6 @@
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.yyz.wanandroid.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/title_articles"
         tools:layout="@layout/fragment_notifications" />
 </navigation>
