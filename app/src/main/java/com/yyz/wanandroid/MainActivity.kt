@@ -7,13 +7,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.yyz.wanandroid.base.BaseActivity
 import com.yyz.wanandroid.databinding.ActivityMainBinding
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity<ActivityMainBinding>() {
 
-    private val binding: ActivityMainBinding by lazy {
-        ActivityMainBinding.inflate(layoutInflater)
-    }
-
-    override fun setContentView() = binding.root
+    override fun initBinding(): ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
 
     override fun initView() {
         val navController = findNavController(R.id.nav_host_fragment)
