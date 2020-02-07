@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.tab.TabFragment">
+    tools:context=".ui.home.tab.ArticleListFragment">
 
     <TextView
         android:id="@+id/tvContent"

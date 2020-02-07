@@ -1,13 +1,13 @@
-package com.yyz.wanandroid.ui.articels
+package com.yyz.wanandroid.ui.wxarticels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class ArticlessViewModel : ViewModel() {
+class WxArticlesViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is notifications Fragment"
+        value = "This is WxArticles Fragment"
     }
     val text: LiveData<String> = _text
 }

@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.yyz.wanandroid.ui.articels.ArticlesFragment"
+        android:name="com.yyz.wanandroid.ui.wxarticels.WxArticlesFragment"
         android:label="@string/title_articles"
-        tools:layout="@layout/fragment_articles" />
+        tools:layout="@layout/fragment_wxarticles" />
 </navigation>

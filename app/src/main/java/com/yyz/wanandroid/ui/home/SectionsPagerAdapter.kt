@@ -3,11 +3,12 @@ package com.yyz.wanandroid.ui.home
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.yyz.wanandroid.ui.home.tab.TabFragment
+import com.yyz.wanandroid.ui.home.tab.ArticleListFragment
+import com.yyz.wanandroid.ui.home.tab.ProjectListFragment
 
 private val TAB_TITLES = arrayOf(
-    "1",
-    "2"
+    "最新博文",
+    "最新项目"
 )
 
 /**
@@ -21,7 +22,11 @@ class SectionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(
     BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
 ) {
     override fun getItem(position: Int): Fragment {
-        return TabFragment.newInstance(TAB_TITLES[position], "newInstance")
+        return if (position == 0) {
+            ArticleListFragment.newInstance(TAB_TITLES[position])
+        } else {
+            ProjectListFragment.newInstance(TAB_TITLES[position])
+        }
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
