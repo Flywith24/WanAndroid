@@ -1,10 +1,9 @@
 package com.yyz.wanandroid.base
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.viewbinding.ViewBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
@@ -15,23 +14,26 @@ import kotlinx.coroutines.cancel
  * time   14:26
  * description
  */
-abstract class BaseFragment : Fragment(), CoroutineScope by MainScope() {
+abstract class BaseFragment<T : ViewBinding>(layoutId: Int) : Fragment(layoutId),
+    CoroutineScope by MainScope() {
+    private var _binding: T? = null
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(setContentView(), container, false)
-    }
+    val binding get() = _binding!!
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        initView()
         super.onViewCreated(view, savedInstanceState)
+        _binding = bindView()
+        initData()
     }
 
-    abstract fun setContentView(): Int
-    abstract fun initView()
+    abstract fun initData()
+
+    abstract fun bindView(): T
+
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
+    }
 
     override fun onDestroy() {
         super.onDestroy()
