@@ -2,7 +2,7 @@ package com.yyz.wanandroid.ui.home
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
+import androidx.fragment.app.FragmentStatePagerAdapter
 import com.yyz.wanandroid.ui.home.tab.ArticleListFragment
 import com.yyz.wanandroid.ui.home.tab.ProjectListFragment
 
@@ -17,16 +17,14 @@ private val TAB_TITLES = arrayOf(
  * time   22:31
  * description
  */
-class SectionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(
+class SectionsPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(
     fm,
     BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
 ) {
+    private val list: List<Fragment> = listOf(ArticleListFragment(), ProjectListFragment())
+
     override fun getItem(position: Int): Fragment {
-        return if (position == 0) {
-            ArticleListFragment.newInstance(TAB_TITLES[position])
-        } else {
-            ProjectListFragment.newInstance(TAB_TITLES[position])
-        }
+        return list[position]
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
