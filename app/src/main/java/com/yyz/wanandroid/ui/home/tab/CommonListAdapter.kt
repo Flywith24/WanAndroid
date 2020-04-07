@@ -1,4 +1,4 @@
-package com.yyz.wanandroid.ui.home.tab.article
+package com.yyz.wanandroid.ui.home.tab
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -14,7 +14,7 @@ import com.yyz.wanandroid.databinding.ItemHomeListBinding
  * description
  */
 
-class ArticleListAdapter : DataBindingListAdapter<Data, ItemHomeListBinding>(object :
+class CommonListAdapter : DataBindingListAdapter<Data, ItemHomeListBinding>(object :
     DiffUtil.ItemCallback<Data>() {
     override fun areItemsTheSame(oldItem: Data, newItem: Data): Boolean = oldItem == newItem
 

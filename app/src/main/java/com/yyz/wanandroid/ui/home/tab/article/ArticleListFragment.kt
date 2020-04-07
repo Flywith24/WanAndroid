@@ -6,10 +6,11 @@ import androidx.fragment.app.viewModels
 import com.yyz.wanandroid.R
 import com.yyz.wanandroid.common.BaseFragment
 import com.yyz.wanandroid.databinding.FragmentArticleBinding
+import com.yyz.wanandroid.ui.home.tab.CommonListAdapter
 
 class ArticleListFragment : BaseFragment<FragmentArticleBinding>(R.layout.fragment_article) {
 
-    private val mAdapter by lazy { ArticleListAdapter() }
+    private val mAdapter by lazy { CommonListAdapter() }
     private val mViewModel by viewModels<ArticleViewModel> {
         ArticleViewModel.ArticleViewModelFactory(
             ArticleRepository.getInstance()

@@ -21,6 +21,10 @@ interface CommonService {
     @GET("article/list/{pageSize}/json")
     suspend fun getHomeArticleList(@Path("pageSize") pageSize: Int): Response<Article>
 
+    /*首页项目列表*/
+    @GET("article/listproject/{pageSize}/json")
+    suspend fun getProjectList(@Path("pageSize") pageSize: Int): Response<Article>
+
     /*首页banner*/
     @GET("banner/json")
     suspend fun getHomeBanner(): Response<List<HomeBanner>>
