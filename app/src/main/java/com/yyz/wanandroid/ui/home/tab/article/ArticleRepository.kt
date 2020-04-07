@@ -1,10 +1,8 @@
 package com.yyz.wanandroid.ui.home.tab.article
 
-import androidx.lifecycle.liveData
 import com.yyz.wanandroid.common.BaseRepository
 import com.yyz.wanandroid.common.StatefulLiveData
 import com.yyz.wanandroid.data.api.RetrofitClient
-import com.yyz.wanandroid.data.bean.Article
 import com.yyz.wanandroid.data.bean.Data
 import com.yyz.wanandroid.ui.home.tab.ArticleDao
 import resultLiveData
@@ -17,13 +15,7 @@ import resultLiveData
  */
 class ArticleRepository(private val articleDao: ArticleDao) : BaseRepository() {
 
-    fun getHomeArticleList(pageSize: Int = 0): StatefulLiveData<Article> {
-        return liveData {
-            emit(safeApiCall { RetrofitClient.api.getHomeArticleList(pageSize) })
-        }
-    }
-
-    fun getHomeArticleList1(pageSize: Int = 0): StatefulLiveData<List<Data>> = resultLiveData(
+    fun getHomeArticleList(pageSize: Int = 0): StatefulLiveData<List<Data>> = resultLiveData(
         databaseQuery = { articleDao.loadAllArticles() },
         networkCall = {
             safeApiCall { RetrofitClient.api.getHomeArticleList(pageSize) }

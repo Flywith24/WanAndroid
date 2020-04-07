@@ -16,7 +16,7 @@ class ArticleViewModel(private val repository: ArticleRepository) : ViewModel() 
     private val request = MutableLiveData<Event<Any>>()
 
     val articleList = request.switchMap {
-        repository.getHomeArticleList1()
+        repository.getHomeArticleList()
     }
 
     fun getHomeArticleList() {
