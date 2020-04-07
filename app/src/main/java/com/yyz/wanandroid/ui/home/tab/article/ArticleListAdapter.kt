@@ -1,4 +1,4 @@
-package com.yyz.wanandroid.ui.home.tab
+package com.yyz.wanandroid.ui.home.tab.article
 
 import android.view.LayoutInflater
 import android.view.View
@@ -19,7 +19,9 @@ class ArticleListAdapter : RecyclerView.Adapter<ArticleListAdapter.ArticleViewHo
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_home_list, parent, false)
-        return ArticleViewHolder(itemView)
+        return ArticleViewHolder(
+            itemView
+        )
     }
 
     override fun getItemCount(): Int = mData?.size ?: 0
