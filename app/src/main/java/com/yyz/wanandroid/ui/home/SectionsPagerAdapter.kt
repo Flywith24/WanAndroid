@@ -2,7 +2,7 @@ package com.yyz.wanandroid.ui.home
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.yyz.wanandroid.ui.home.tab.ArticleListFragment
+import com.yyz.wanandroid.ui.home.tab.article.ArticleListFragment
 import com.yyz.wanandroid.ui.home.tab.ProjectListFragment
 
 /**

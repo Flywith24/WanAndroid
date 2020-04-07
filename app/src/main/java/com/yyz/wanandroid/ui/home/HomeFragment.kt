@@ -4,7 +4,7 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import com.google.android.material.tabs.TabLayoutMediator
 import com.yyz.wanandroid.R
-import com.yyz.wanandroid.base.BaseFragment
+import com.yyz.wanandroid.common.BaseFragment
 import com.yyz.wanandroid.databinding.FragmentHomeBinding
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
