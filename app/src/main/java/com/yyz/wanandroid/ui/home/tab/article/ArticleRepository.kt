@@ -12,7 +12,7 @@ import com.yyz.wanandroid.data.bean.Article
  * time   9:51
  * description
  */
-class ArticleRepository : BaseRepository() {
+class ArticleRepository private constructor() : BaseRepository() {
 
     fun getHomeArticleList(pageSize: Int = 0): StatefulLiveData<Article> {
         return liveData {
