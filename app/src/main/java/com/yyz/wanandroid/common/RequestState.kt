@@ -1,5 +1,7 @@
 package com.yyz.wanandroid.common
 
+import androidx.lifecycle.LiveData
+
 
 /**
  * @author yyz (杨云召)
@@ -10,6 +12,10 @@ package com.yyz.wanandroid.common
 sealed class RequestState<out T> {
     object Loading : RequestState<Nothing>()
     data class Success<out T>(val data: T?) : RequestState<T>()
-    data class GenericError(val code: String? = null, val error: ApiException? = null) : RequestState<Nothing>()
+    data class GenericError(val code: String? = null, val error: ApiException? = null) :
+        RequestState<Nothing>()
+
     object NetworkError : RequestState<Nothing>()
 }
+
+typealias StatefulLiveData<T> = LiveData<RequestState<T>>
