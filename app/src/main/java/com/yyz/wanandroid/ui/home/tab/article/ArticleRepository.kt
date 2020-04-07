@@ -1,9 +1,8 @@
 package com.yyz.wanandroid.ui.home.tab.article
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.yyz.wanandroid.common.BaseRepository
-import com.yyz.wanandroid.common.RequestState
+import com.yyz.wanandroid.common.StatefulLiveData
 import com.yyz.wanandroid.data.api.RetrofitClient
 import com.yyz.wanandroid.data.bean.Article
 
@@ -14,7 +13,8 @@ import com.yyz.wanandroid.data.bean.Article
  * description
  */
 class ArticleRepository : BaseRepository() {
-    fun getHomeArticleList(pageSize: Int = 0): LiveData<RequestState<Article>> {
+
+    fun getHomeArticleList(pageSize: Int = 0): StatefulLiveData<Article> {
         return liveData {
             emit(safeApiCall { RetrofitClient.api.getHomeArticleList(pageSize) })
         }

@@ -33,10 +33,9 @@ class ArticleListFragment : BaseFragment<FragmentArticleBinding>(R.layout.fragme
         mViewModel.getHomeArticleList()
         mViewModel.articleList.observe(viewLifecycleOwner) {
             when (it) {
-                is RequestState.Success -> mAdapter.mData = it.data?.datas
-                else -> mAdapter.mData = emptyList()
+                is RequestState.Success -> mAdapter.submitList(it.data?.datas)
+                else -> mAdapter.submitList(emptyList())
             }
-            mAdapter.notifyDataSetChanged()
         }
     }
 
