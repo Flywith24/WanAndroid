@@ -3,9 +3,6 @@ package com.yyz.wanandroid.base
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.cancel
 
 /**
  * @author yyz (杨云召)
@@ -14,7 +11,7 @@ import kotlinx.coroutines.cancel
  * description
  * Activity基类
  */
-abstract class BaseActivity<T : ViewBinding> : AppCompatActivity(), CoroutineScope by MainScope() {
+abstract class BaseActivity<T : ViewBinding> : AppCompatActivity() {
     lateinit var binding: T
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,8 +28,4 @@ abstract class BaseActivity<T : ViewBinding> : AppCompatActivity(), CoroutineSco
 
     abstract fun initView()
 
-    override fun onDestroy() {
-        super.onDestroy()
-        cancel()
-    }
 }
