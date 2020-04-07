@@ -5,6 +5,9 @@ import com.yyz.wanandroid.common.BaseRepository
 import com.yyz.wanandroid.common.StatefulLiveData
 import com.yyz.wanandroid.data.api.RetrofitClient
 import com.yyz.wanandroid.data.bean.Article
+import com.yyz.wanandroid.data.bean.Data
+import com.yyz.wanandroid.ui.home.tab.ArticleDao
+import resultLiveData
 
 /**
  * @author yyz (杨云召)
@@ -12,7 +15,7 @@ import com.yyz.wanandroid.data.bean.Article
  * time   9:51
  * description
  */
-class ArticleRepository private constructor() : BaseRepository() {
+class ArticleRepository(private val articleDao: ArticleDao) : BaseRepository() {
 
     fun getHomeArticleList(pageSize: Int = 0): StatefulLiveData<Article> {
         return liveData {
@@ -20,14 +23,25 @@ class ArticleRepository private constructor() : BaseRepository() {
         }
     }
 
+    fun getHomeArticleList1(pageSize: Int = 0): StatefulLiveData<List<Data>> = resultLiveData(
+        databaseQuery = { articleDao.loadAllArticles() },
+        networkCall = {
+            safeApiCall { RetrofitClient.api.getHomeArticleList(pageSize) }
+        },
+        saveCallResult = { data ->
+            data?.datas?.let {
+                articleDao.insertArticles(it)
+            }
+        })
+
     companion object {
         @Volatile
         private var instance: ArticleRepository? = null
 
-        fun getInstance() = instance
+        fun getInstance(articleDao: ArticleDao) = instance
             ?: synchronized(this) {
                 instance
-                    ?: ArticleRepository().also { instance = it }
+                    ?: ArticleRepository(articleDao).also { instance = it }
             }
     }
 }

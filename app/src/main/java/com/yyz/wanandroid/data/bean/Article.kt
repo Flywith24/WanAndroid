@@ -2,6 +2,10 @@
 
 package com.yyz.wanandroid.data.bean
 
+import androidx.room.Entity
+import androidx.room.Ignore
+import androidx.room.PrimaryKey
+
 /**
  * @author yyz (杨云召)
  * @date   2020-02-06
@@ -18,39 +22,49 @@ data class Article(
     val total: Int
 )
 
+@Entity
 data class Data(
-    val apkLink: String,
-    val audit: Int,
-    val author: String,
-    val canEdit: Boolean,
-    val chapterId: Int,
-    val chapterName: String,
-    val collect: Boolean,
-    val courseId: Int,
-    val desc: String,
-    val descMd: String,
-    val envelopePic: String,
-    val fresh: Boolean,
-    val id: Int,
-    val link: String,
-    val niceDate: String,
-    val niceShareDate: String,
-    val origin: String,
-    val prefix: String,
-    val projectLink: String,
-    val publishTime: Long,
-    val selfVisible: Int,
-    val shareDate: Long,
-    val shareUser: String,
-    val superChapterId: Int,
-    val superChapterName: String,
-    val tags: List<Tag>,
-    val title: String,
-    val type: Int,
-    val userId: Int,
-    val visible: Int,
-    val zan: Int
-)
+    var apkLink: String?,
+    var audit: Int,
+    var author: String?,
+    var canEdit: Boolean,
+    var chapterId: Int,
+    var chapterName: String?,
+    var collect: Boolean,
+    var courseId: Int,
+    var desc: String?,
+    var descMd: String?,
+    var envelopePic: String?,
+    var fresh: Boolean,
+    @PrimaryKey
+    var id: Int,
+    var link: String?,
+    var niceDate: String?,
+    var niceShareDate: String?,
+    var origin: String?,
+    var prefix: String?,
+    var projectLink: String?,
+    var publishTime: Long,
+    var selfVisible: Int,
+    var shareDate: Long,
+    var shareUser: String?,
+    var superChapterId: Int,
+    var superChapterName: String?,
+    @Ignore
+    var tags: List<Tag>,
+    var title: String?,
+    var type: Int,
+    var userId: Int,
+    var visible: Int,
+    var zan: Int
+) {
+    constructor() : this(
+        "", 0, "", false, 0, "", false, 0
+        , "", "", "", false, 0, "", "", "", ""
+        , "", "", 0L, 0, 0L, "", 0, "",
+        emptyList<Tag>(), "", 0, 0, 0, 0
+    )
+}
 
 data class Tag(
     val name: String,

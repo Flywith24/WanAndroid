@@ -6,6 +6,7 @@ import androidx.fragment.app.viewModels
 import com.yyz.wanandroid.R
 import com.yyz.wanandroid.common.BaseFragment
 import com.yyz.wanandroid.databinding.FragmentArticleBinding
+import com.yyz.wanandroid.ui.home.tab.AppDatabase
 import com.yyz.wanandroid.ui.home.tab.CommonListAdapter
 
 class ArticleListFragment : BaseFragment<FragmentArticleBinding>(R.layout.fragment_article) {
@@ -13,7 +14,7 @@ class ArticleListFragment : BaseFragment<FragmentArticleBinding>(R.layout.fragme
     private val mAdapter by lazy { CommonListAdapter() }
     private val mViewModel by viewModels<ArticleViewModel> {
         ArticleViewModel.ArticleViewModelFactory(
-            ArticleRepository.getInstance()
+            ArticleRepository.getInstance(AppDatabase.getInstance(requireContext().applicationContext).articleDao())
         )
     }
 
@@ -24,7 +25,7 @@ class ArticleListFragment : BaseFragment<FragmentArticleBinding>(R.layout.fragme
         mViewModel.getHomeArticleList()
 
         handleData(mViewModel.articleList, {
-            mAdapter.submitList(it?.datas)
+            mAdapter.submitList(it)
         }, {
             mAdapter.submitList(emptyList())
         })

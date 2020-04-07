@@ -16,7 +16,7 @@ import com.yyz.wanandroid.databinding.ItemHomeListBinding
 
 class CommonListAdapter : DataBindingListAdapter<Data, ItemHomeListBinding>(object :
     DiffUtil.ItemCallback<Data>() {
-    override fun areItemsTheSame(oldItem: Data, newItem: Data): Boolean = oldItem == newItem
+    override fun areItemsTheSame(oldItem: Data, newItem: Data): Boolean = oldItem.id == newItem.id
 
     override fun areContentsTheSame(oldItem: Data, newItem: Data): Boolean {
         return oldItem.link == newItem.link &&
@@ -32,7 +32,7 @@ class CommonListAdapter : DataBindingListAdapter<Data, ItemHomeListBinding>(obje
     override fun bind(binding: ItemHomeListBinding, item: Data) {
         with(binding) {
             title.text = item.title
-            description.text = "3"
+            description.text = item.niceShareDate
         }
     }
 }
