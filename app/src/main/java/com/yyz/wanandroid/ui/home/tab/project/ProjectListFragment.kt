@@ -1,4 +1,4 @@
-package com.yyz.wanandroid.ui.home.tab
+package com.yyz.wanandroid.ui.home.tab.project
 
 import android.os.Bundle
 import android.view.View
@@ -6,16 +6,12 @@ import com.yyz.wanandroid.R
 import com.yyz.wanandroid.common.BaseFragment
 import com.yyz.wanandroid.databinding.FragmentArticleBinding
 
-
 class ProjectListFragment : BaseFragment<FragmentArticleBinding>(R.layout.fragment_article) {
-    private var param1: String? = null
 
     override fun initBinding(view: View): FragmentArticleBinding = FragmentArticleBinding.bind(view)
 
     override fun initData() {
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-        }
+       
     }
 
     companion object {
