@@ -3,6 +3,7 @@ package com.yyz.wanandroid.common
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.observe
 import androidx.viewbinding.ViewBinding
 
 /**
@@ -36,4 +37,26 @@ abstract class BaseFragment<T : ViewBinding>(layoutId: Int) : Fragment(layoutId)
         _binding = null
         super.onDestroyView()
     }
+
+    protected fun <T> handleData(
+        liveData: StatefulLiveData<T>,
+        action: (T?) -> Unit = {},
+        errorAction: (ApiException?) -> Unit = {}
+    ) =
+        liveData.observe(viewLifecycleOwner) { result ->
+            when (result) {
+                is RequestState.Loading -> {
+
+                }
+                is RequestState.Success -> {
+                    action(result.data)
+                }
+                is RequestState.GenericError -> {
+                    errorAction(result.error)
+                }
+                is RequestState.NetworkError -> {
+
+                }
+            }
+        }
 }
