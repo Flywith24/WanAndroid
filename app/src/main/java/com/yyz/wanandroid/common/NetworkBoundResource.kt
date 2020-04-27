@@ -1,8 +1,8 @@
+package com.yyz.wanandroid.common
+
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.map
-import com.yyz.wanandroid.common.RequestState
-import com.yyz.wanandroid.common.StatefulLiveData
 import kotlinx.coroutines.Dispatchers
 
 fun <T, A> resultLiveData(
