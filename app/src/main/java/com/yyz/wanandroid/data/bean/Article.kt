@@ -25,27 +25,14 @@ data class Article(
 @Entity
 data class Data(
     var apkLink: String?,
-    var audit: Int,
     var author: String?,
-    var canEdit: Boolean,
-    var chapterId: Int,
-    var chapterName: String?,
     var collect: Boolean,
-    var courseId: Int,
     var desc: String?,
-    var descMd: String?,
-    var envelopePic: String?,
-    var fresh: Boolean,
-    @PrimaryKey
     var id: Int,
     var link: String?,
     var niceDate: String?,
-    var niceShareDate: String?,
-    var origin: String?,
-    var prefix: String?,
     var projectLink: String?,
     var publishTime: Long,
-    var selfVisible: Int,
     var shareDate: Long,
     var shareUser: String?,
     var superChapterId: Int,
@@ -58,12 +45,8 @@ data class Data(
     var visible: Int,
     var zan: Int
 ) {
-    constructor() : this(
-        "", 0, "", false, 0, "", false, 0
-        , "", "", "", false, 0, "", "", "", ""
-        , "", "", 0L, 0, 0L, "", 0, "",
-        emptyList<Tag>(), "", 0, 0, 0, 0
-    )
+    @PrimaryKey(autoGenerate = true)
+    var indexInResponse: Int = -1
 }
 
 data class Tag(

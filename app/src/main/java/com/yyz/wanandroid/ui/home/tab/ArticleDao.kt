@@ -1,6 +1,7 @@
 package com.yyz.wanandroid.ui.home.tab
 
 import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -21,4 +22,8 @@ interface ArticleDao {
 
     @Query("SELECT * FROM data")
     fun loadAllArticles(): LiveData<List<Data>>
+
+    @Query("SELECT * FROM data ORDER BY indexInResponse ASC")
+    fun loadArticles(): DataSource.Factory<Int, Data>
+
 }
