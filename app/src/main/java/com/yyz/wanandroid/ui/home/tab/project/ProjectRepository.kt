@@ -1,8 +1,8 @@
 package com.yyz.wanandroid.ui.home.tab.project
 
 import androidx.lifecycle.liveData
-import com.yyz.wanandroid.common.BaseRepository
 import com.yyz.wanandroid.common.StatefulLiveData
+import com.yyz.wanandroid.common.safeApiCall
 import com.yyz.wanandroid.data.api.RetrofitClient
 import com.yyz.wanandroid.data.bean.Article
 
@@ -12,7 +12,7 @@ import com.yyz.wanandroid.data.bean.Article
  * time   11:26
  * description
  */
-class ProjectRepository private constructor() : BaseRepository() {
+class ProjectRepository private constructor() {
 
     fun getProjectList(pageSize: Int = 0): StatefulLiveData<Article> {
         return liveData {

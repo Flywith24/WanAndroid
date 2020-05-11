@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import com.yyz.wanandroid.common.DataBindingListAdapter
+import com.yyz.wanandroid.common.DataBindingPagingListAdapter
 import com.yyz.wanandroid.data.bean.Data
 import com.yyz.wanandroid.databinding.ItemHomeListBinding
 
@@ -14,7 +15,7 @@ import com.yyz.wanandroid.databinding.ItemHomeListBinding
  * description
  */
 
-class CommonListAdapter : DataBindingListAdapter<Data, ItemHomeListBinding>(object :
+class CommonListAdapter : DataBindingPagingListAdapter<Data, ItemHomeListBinding>(object :
     DiffUtil.ItemCallback<Data>() {
     override fun areItemsTheSame(oldItem: Data, newItem: Data): Boolean = oldItem.id == newItem.id
 
@@ -24,15 +25,12 @@ class CommonListAdapter : DataBindingListAdapter<Data, ItemHomeListBinding>(obje
     }
 }) {
     override fun createBinding(parent: ViewGroup): ItemHomeListBinding {
-        val binding =
-            ItemHomeListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return binding
+        return ItemHomeListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     }
 
-    override fun bind(binding: ItemHomeListBinding, item: Data) {
-        with(binding) {
-            title.text = item.title
-            description.text = item.niceShareDate
+    override fun bind(binding: ItemHomeListBinding, item: Data?) {
+        item?.let { data ->
+            binding.article = data
         }
     }
 }

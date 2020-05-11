@@ -1,9 +1,11 @@
 package com.yyz.wanandroid.common
 
+import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.map
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 fun <T, A> resultLiveData(
     databaseQuery: () -> LiveData<T>,
@@ -25,3 +27,15 @@ fun <T, A> resultLiveData(
             }
         }
     }
+
+fun <A> pagingResult(
+    lifecycleScope: LifecycleCoroutineScope,
+    networkCall: suspend () -> RequestState<A>,
+    saveCallResult: suspend (A?) -> Unit
+) {
+    lifecycleScope.launch {
+        when (val responseStatus = networkCall.invoke()) {
+            is RequestState.Success -> saveCallResult(responseStatus.data)
+        }
+    }
+}

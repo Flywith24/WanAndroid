@@ -1,10 +1,9 @@
 package com.yyz.wanandroid.ui.home.tab.article
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.switchMap
+import androidx.lifecycle.*
+import androidx.paging.PagedList
 import com.yyz.wanandroid.common.Event
+import com.yyz.wanandroid.data.bean.Data
 
 /**
  * @author yyz (杨云召)
@@ -15,8 +14,9 @@ import com.yyz.wanandroid.common.Event
 class ArticleViewModel(private val repository: ArticleRepository) : ViewModel() {
     private val request = MutableLiveData<Event<Any>>()
 
-    val articleList = request.switchMap {
+    val articleList: LiveData<PagedList<Data>> = request.switchMap {
         repository.getHomeArticleList()
+
     }
 
     fun getHomeArticleList() {

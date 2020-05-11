@@ -37,8 +37,6 @@ data class Data(
     var shareUser: String?,
     var superChapterId: Int,
     var superChapterName: String?,
-    @Ignore
-    var tags: List<Tag>,
     var title: String?,
     var type: Int,
     var userId: Int,

@@ -2,14 +2,15 @@ package com.yyz.wanandroid.common
 
 import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
+import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.AsyncDifferConfig
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 
-abstract class DataBindingListAdapter<T, V : ViewDataBinding>(
+abstract class DataBindingPagingListAdapter<T, V : ViewDataBinding>(
     diffCallback: DiffUtil.ItemCallback<T>
-) : ListAdapter<T, DataBindingViewHolder<V>>(
+) : PagedListAdapter<T, DataBindingViewHolder<V>>(
     AsyncDifferConfig.Builder<T>(diffCallback)
         .build()
 ) {
@@ -25,7 +26,5 @@ abstract class DataBindingListAdapter<T, V : ViewDataBinding>(
         holder.binding.executePendingBindings()
     }
 
-    protected abstract fun bind(binding: V, item: T)
+    protected abstract fun bind(binding: V, item: T?)
 }
-
-

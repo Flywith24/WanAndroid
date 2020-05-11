@@ -22,11 +22,11 @@ class ProjectListFragment : BaseFragment<FragmentArticleBinding>(R.layout.fragme
     override fun initData() {
         binding.recyclerView.adapter = mAdapter
         mViewModel.getProjectList()
-        handleData(mViewModel.projectList, {
+        /*handleData(mViewModel.projectList, {
             mAdapter.submitList(it?.datas)
         }, {
             mAdapter.submitList(emptyList())
-        })
+        })*/
     }
 
     companion object {

@@ -3,6 +3,8 @@ package com.yyz.wanandroid.ui.home.tab.article
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import com.yyz.wanandroid.R
 import com.yyz.wanandroid.common.BaseFragment
 import com.yyz.wanandroid.databinding.FragmentArticleBinding
@@ -14,7 +16,12 @@ class ArticleListFragment : BaseFragment<FragmentArticleBinding>(R.layout.fragme
     private val mAdapter by lazy { CommonListAdapter() }
     private val mViewModel by viewModels<ArticleViewModel> {
         ArticleViewModel.ArticleViewModelFactory(
-            ArticleRepository.getInstance(AppDatabase.getInstance(requireContext().applicationContext).articleDao())
+            ArticleRepository.getInstance(
+                lifecycleScope,
+                AppDatabase.getInstance(
+                    requireContext().applicationContext
+                ).articleDao()
+            )
         )
     }
 
@@ -23,11 +30,8 @@ class ArticleListFragment : BaseFragment<FragmentArticleBinding>(R.layout.fragme
     override fun initData() {
         binding.recyclerView.adapter = mAdapter
         mViewModel.getHomeArticleList()
-
-        handleData(mViewModel.articleList, {
+        mViewModel.articleList.observe(viewLifecycleOwner, Observer {
             mAdapter.submitList(it)
-        }, {
-            mAdapter.submitList(emptyList())
         })
     }
 
