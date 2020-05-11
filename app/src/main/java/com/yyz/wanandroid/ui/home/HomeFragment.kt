@@ -1,5 +1,6 @@
 package com.yyz.wanandroid.ui.home
 
+import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.google.android.material.tabs.TabLayoutMediator
@@ -13,7 +14,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     override fun initBinding(view: View): FragmentHomeBinding = FragmentHomeBinding.bind(view)
 
-    override fun initData() {
+    override fun initData(savedInstanceState: Bundle?) {
         binding.viewPager.adapter = SectionsPagerAdapter(this)
         TabLayoutMediator(binding.tabs, binding.viewPager) { tab, position ->
             tab.text = TAB_TITLES[position]

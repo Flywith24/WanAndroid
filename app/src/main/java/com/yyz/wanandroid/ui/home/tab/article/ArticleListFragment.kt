@@ -1,6 +1,7 @@
 package com.yyz.wanandroid.ui.home.tab.article
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -27,12 +28,13 @@ class ArticleListFragment : BaseFragment<FragmentArticleBinding>(R.layout.fragme
 
     override fun initBinding(view: View): FragmentArticleBinding = FragmentArticleBinding.bind(view)
 
-    override fun initData() {
+    override fun initData(savedInstanceState: Bundle?) {
         binding.recyclerView.adapter = mAdapter
         mViewModel.getHomeArticleList()
         mViewModel.articleList.observe(viewLifecycleOwner, Observer {
             mAdapter.submitList(it)
         })
+        Log.i("yyz11", "initData: $savedInstanceState")
     }
 
     companion object {

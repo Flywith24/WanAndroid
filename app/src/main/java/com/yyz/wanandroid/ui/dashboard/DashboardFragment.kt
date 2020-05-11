@@ -1,5 +1,6 @@
 package com.yyz.wanandroid.ui.dashboard
 
+import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
@@ -13,7 +14,7 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding>(R.layout.fragme
     override fun initBinding(view: View): FragmentDashboardBinding =
         FragmentDashboardBinding.bind(view)
 
-    override fun initData() {
+    override fun initData(savedInstanceState: Bundle?) {
         dashboardViewModel.text.observe(viewLifecycleOwner) {
             binding.tvDashboard.text = it
         }

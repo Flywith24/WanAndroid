@@ -23,7 +23,7 @@ abstract class BaseFragment<T : ViewBinding>(layoutId: Int) : Fragment(layoutId)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = initBinding(view)
-        initData()
+        initData(savedInstanceState)
     }
 
     /**
@@ -31,7 +31,7 @@ abstract class BaseFragment<T : ViewBinding>(layoutId: Int) : Fragment(layoutId)
      */
     abstract fun initBinding(view: View): T
 
-    abstract fun initData()
+    abstract fun initData(savedInstanceState: Bundle?)
 
     override fun onDestroyView() {
         _binding = null

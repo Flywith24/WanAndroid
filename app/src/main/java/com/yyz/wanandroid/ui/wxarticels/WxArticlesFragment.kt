@@ -1,5 +1,6 @@
 package com.yyz.wanandroid.ui.wxarticels
 
+import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
@@ -13,7 +14,7 @@ class WxArticlesFragment : BaseFragment<FragmentWxarticlesBinding>(R.layout.frag
 
     override fun initBinding(view: View): FragmentWxarticlesBinding = FragmentWxarticlesBinding.bind(view)
 
-    override fun initData() {
+    override fun initData(savedInstanceState: Bundle?) {
         articlesViewModel.text.observe(viewLifecycleOwner) {
             binding.tvArticles.text = it
         }

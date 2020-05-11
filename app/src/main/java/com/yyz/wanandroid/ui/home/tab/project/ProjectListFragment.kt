@@ -19,7 +19,7 @@ class ProjectListFragment : BaseFragment<FragmentArticleBinding>(R.layout.fragme
 
     override fun initBinding(view: View): FragmentArticleBinding = FragmentArticleBinding.bind(view)
 
-    override fun initData() {
+    override fun initData(savedInstanceState: Bundle?) {
         binding.recyclerView.adapter = mAdapter
         mViewModel.getProjectList()
         /*handleData(mViewModel.projectList, {
