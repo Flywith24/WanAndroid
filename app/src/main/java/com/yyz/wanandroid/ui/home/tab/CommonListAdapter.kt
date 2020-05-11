@@ -1,9 +1,9 @@
 package com.yyz.wanandroid.ui.home.tab
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
-import com.yyz.wanandroid.common.DataBindingListAdapter
 import com.yyz.wanandroid.common.DataBindingPagingListAdapter
 import com.yyz.wanandroid.data.bean.Data
 import com.yyz.wanandroid.databinding.ItemHomeListBinding
@@ -25,7 +25,15 @@ class CommonListAdapter : DataBindingPagingListAdapter<Data, ItemHomeListBinding
     }
 }) {
     override fun createBinding(parent: ViewGroup): ItemHomeListBinding {
-        return ItemHomeListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ItemHomeListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        binding.collect.setOnClickListener {
+            binding.article?.let { data ->
+                data.collect = !data.collect
+                it.isSelected = data.collect
+            }
+        }
+        return binding
     }
 
     override fun bind(binding: ItemHomeListBinding, item: Data?) {
@@ -33,4 +41,11 @@ class CommonListAdapter : DataBindingPagingListAdapter<Data, ItemHomeListBinding
             binding.article = data
         }
     }
+
+/*    class ClickProxy {
+        fun collect(article: Data) {
+            Log.i("yyz1", "collect: 点击 ${article.collect}")
+            article.collect = true
+        }
+    }*/
 }

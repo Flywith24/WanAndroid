@@ -5,4 +5,5 @@
     <string name="title_articles">公众号</string>
     <string name="hint_share_user">分享人：%1$s</string>
     <string name="hint_author">作者：%1$s</string>
+    <string name="hint_type">%1$s / %2$s</string>
 </resources>

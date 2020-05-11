@@ -26,6 +26,7 @@ data class Article(
 data class Data(
     var apkLink: String?,
     var author: String?,
+    var chapterName: String?,
     var collect: Boolean,
     var desc: String?,
     var id: Int,

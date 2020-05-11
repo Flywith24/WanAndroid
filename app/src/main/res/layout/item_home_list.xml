@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.text.TextUtils" />
+
         <variable
             name="article"
             type="com.yyz.wanandroid.data.bean.Data" />
@@ -30,14 +32,53 @@
                 tools:text="title" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:text="@{@string/hint_type(article.superChapterName,article.chapterName)}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/title"
+                tools:text="@string/hint_type" />
+
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/author"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{@string/hint_share_user(article.shareUser)}"
-                app:layout_constraintStart_toStartOf="@id/title"
-                app:layout_constraintTop_toBottomOf="@id/title"
-                tools:text="description" />
+                android:text="@{@string/hint_author(article.author)}"
+                app:isVisible="@{!TextUtils.isEmpty(article.author)}"
+                app:layout_constraintStart_toStartOf="@id/type"
+                app:layout_constraintTop_toBottomOf="@id/type"
+                tools:text="@string/hint_author" />
 
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/shareUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/hint_share_user(article.shareUser)}"
+                app:isVisible="@{!TextUtils.isEmpty(article.shareUser)}"
+                app:layout_constraintStart_toStartOf="@id/type"
+                app:layout_constraintTop_toBottomOf="@id/type"
+                tools:text="@string/hint_share_user" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{article.niceDate}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/type"
+                tools:text="时间" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/collect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_like"
+                app:isSelected="@{article.collect}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </layout>
