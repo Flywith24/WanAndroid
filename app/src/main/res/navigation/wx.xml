@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/wx"
+    app:startDestination="@id/wxArticlesFragment"
+    tools:ignore="UnusedNavigation">
+
+    <fragment
+        android:id="@+id/wxArticlesFragment"
+        android:name="com.yyz.wanandroid.ui.wxarticels.WxArticlesFragment"
+        android:label="@string/title_articles" />
+</navigation>
