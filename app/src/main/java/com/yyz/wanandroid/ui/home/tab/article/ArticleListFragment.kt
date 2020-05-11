@@ -34,7 +34,6 @@ class ArticleListFragment : BaseFragment<FragmentArticleBinding>(R.layout.fragme
         mViewModel.articleList.observe(viewLifecycleOwner, Observer {
             mAdapter.submitList(it)
         })
-        Log.i("yyz11", "initData: $savedInstanceState")
     }
 
     companion object {
