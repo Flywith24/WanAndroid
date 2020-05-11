@@ -18,7 +18,7 @@ abstract class BaseActivity<T : ViewBinding> : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = initBinding()
         setContentView(binding.root)
-        initView()
+        initView(savedInstanceState)
     }
 
     /**
@@ -26,6 +26,6 @@ abstract class BaseActivity<T : ViewBinding> : AppCompatActivity() {
      */
     abstract fun initBinding(): T
 
-    abstract fun initView()
+    abstract fun initView(savedInstanceState: Bundle?)
 
 }
